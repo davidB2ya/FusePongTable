@@ -1,14 +1,59 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import AlertInfo from './AlertInfo';
+import { useApp } from "../contexts/store.js";
+
 
 const LoginForm = () => {
+
+    const { addUser } = useApp();
+    const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [modal, setModal] = useState(false);
+    const [user, setUser] = useState([]);
+
+    const baseUrl = 'http://localhost:3001'
+
+    async function loginUser(event) {
+        event.preventDefault();
+        const response = await fetch(`${baseUrl}/api/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email,
+                password
+            }),
+        });
+
+        const data = await response.json();
+
+        if (data.msg === 'Login success!') {
+            setUser(data)
+            addUser(data.user)
+            setModal(true)
+        } else {
+            alert("Ingreso fallido")
+        }
+    }
+    async function registerUser() {
+        navigate("/register")
+    }
+
+
     return (
         <div class="flex justify-center items-center my-10">
+            {
+                modal === true ? <AlertInfo data={user}/> : <div></div>
+            }
             <div class="flex justify-center items-center flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
                 <div class="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">
                     Ingrese a su cuenta
                 </div>
                 <div class="mt-8">
-                    <form action="#" autoComplete="off">
+                    <form autoComplete="off" onSubmit={loginUser}>
                         <div class="flex flex-col mb-2">
                             <div class="flex relative ">
                                 <span class="rounded-l-md inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
@@ -17,7 +62,7 @@ const LoginForm = () => {
                                         </path>
                                     </svg>
                                 </span>
-                                <input type="text" id="sign-in-email" class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" placeholder="Tu correo..." />
+                                <input type="text" id="sign-in-email" value={email} onChange={(e) => setEmail(e.target.value)} class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" placeholder="Tu correo..." />
                             </div>
                         </div>
                         <div class="flex flex-col mb-6">
@@ -28,7 +73,7 @@ const LoginForm = () => {
                                         </path>
                                     </svg>
                                 </span>
-                                <input type="password" id="sign-in-email" class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" placeholder="Tu contraseña..." />
+                                <input type="password" id="sign-in-email" value={password} onChange={(e) => setPassword(e.target.value)} class=" rounded-r-lg flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" placeholder="Tu contraseña..." />
                             </div>
                         </div>
                         <div class="flex items-center mb-6 -mt-4">
@@ -39,14 +84,14 @@ const LoginForm = () => {
                             </div>
                         </div>
                         <div class="flex w-full">
-                            <button type="submit" class="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                            <button type="submit" onClick={loginUser} class="py-2 px-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-purple-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                                 Acceder
                             </button>
                         </div>
                     </form>
                 </div>
                 <div class="flex items-center justify-center mt-6">
-                    <a href="/register" target="_blank" class="inline-flex items-center text-xs font-thin text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white">
+                    <a href="/register" target="_blank" onClick={registerUser} class="inline-flex items-center text-xs font-thin text-center text-gray-500 hover:text-gray-700 dark:text-gray-100 dark:hover:text-white">
                         <span class="ml-2">
                             ¿No tienes una cuenta?
                         </span>
