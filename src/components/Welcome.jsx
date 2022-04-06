@@ -1,0 +1,42 @@
+import React from 'react'
+import Font from '../assets/undraw_Tasting_re_3k5a.png'
+import Font2 from '../assets/undraw_add_information_j2wg.png'
+
+const Welcome = () => {
+    return (
+
+        <main class="dark:bg-gray-800 bg-white relative overflow-hidden h-full">
+
+            <div class="bg-white dark:bg-gray-800 flex relative z-20 items-center overflow-hidden">
+                <div class="container mx-auto px-6 flex relative py-16">
+                    <div class="sm:w-2/3 lg:w-2/5 flex flex-col relative z-20">
+                        <h1 class="font-bebas-neue uppercase text-6xl sm:text-7xl font-black flex flex-col leading-none dark:text-white text-gray-800">
+                            Fuse pong
+                            <span class="text-5xl sm:text-6xl">
+                                Table
+                            </span>
+                        </h1>
+                        <p class="text-sm sm:text-base my-4 text-gray-700 dark:text-white">
+                            Acompañamos el proceso de Transformación Digital de tu empresa. A través de Soluciones Tecnológicas Amigables que se adapten a tus necesidades.
+                        </p>
+                        <div class="flex mt-8">
+                            <a href="/login" class="uppercase py-2 px-4 rounded-lg bg-blue-500 border-2 border-transparent text-white text-md mr-4 hover:bg-green-500">
+                                Iniciar Sesion
+                            </a>
+                            <a href="/register" class="uppercase py-2 px-4 rounded-lg bg-transparent border-2 border-blue-500 text-blue-500 dark:text-white hover:bg-blue-500 hover:text-white text-md">
+                                Registrarse
+                            </a>
+                        </div>
+                    </div>
+                    <div class="inline lg:block sm:w-2/3 lg:w-lg lg:h-lg relative">
+                        <img src={Font} class="max-w-xs md:max-w-sm m-auto lg:h-lg ml-8" alt="fondo"/>
+                        <img src={Font2} class="max-w-xs md:max-w-sm m-auto lg:h-lg mr-8" alt="fondo"/>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    )
+}
+
+export default Welcome
