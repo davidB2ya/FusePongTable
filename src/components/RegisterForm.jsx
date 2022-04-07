@@ -26,7 +26,7 @@ const RegisterForm = () => {
     const [password, setPassword] = useState('');
     const [phoneNumber, setPhone] = useState('');
 
-    const baseUrl = 'http://localhost:3001'
+    const baseUrl = "https://fusepong-api.herokuapp.com"
 
     async function registerUser(event) {
         event.preventDefault();

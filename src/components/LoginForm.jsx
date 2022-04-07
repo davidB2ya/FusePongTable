@@ -13,7 +13,7 @@ const LoginForm = () => {
     const [modal, setModal] = useState(false);
     const [user, setUser] = useState([]);
 
-    const baseUrl = 'http://localhost:3001'
+    const baseUrl = "https://fusepong-api.herokuapp.com"
 
     async function loginUser(event) {
         event.preventDefault();
