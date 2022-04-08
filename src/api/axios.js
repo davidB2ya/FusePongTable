@@ -17,6 +17,11 @@ export const getTasksRequest = async (id) => await axios.get(`${baseUrl}/api/das
 
 export const getOneCompanyRequest = async (id) => await axios.get(`${baseUrl}/api/company/one/${id}`);
 
+export const getOneTikecktsRequest = async (id) => await axios.get(`${baseUrl}/api/tickets/one/${id}`);
+
+export const updateTickectRequest = async (id, fields) => {
+    return axios.put(`${baseUrl}/api/tickets/update-ticket/${id}`, fields);
+};
 
 // export const deletePostRequest = async (id) =>
 //   await axios.delete("/api/posts/" + id);
@@ -33,6 +38,4 @@ export const getOneCompanyRequest = async (id) => await axios.get(`${baseUrl}/ap
 //   });
 // };
 
-// export const updatePostRequest = async (id, newPostFields) => {
-//   return axios.put("/api/posts/" + id, newPostFields);
-// };
+

@@ -42,7 +42,8 @@ export const AppProvider = ({ children }) => {
 
     const activeProjects = (data) => {
         setShowProject(data)
-        console.log(data)
+        localStorage.removeItem("Project");
+        localStorage.setItem("Project", JSON.stringify(data))
     };
         
     return (
