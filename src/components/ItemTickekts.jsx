@@ -16,12 +16,12 @@ const ItemTickekts = ({ item, index }) => {
 
     return (
         <div>
-            <li className="flex items-center text-gray-400 justify-between py-3 border-b-2 border-gray-100 dark:border-gray-800 w-80">
+            <li className=" flex items-center text-gray-400 justify-between py-3 border-b-2 border-gray-100 dark:border-gray-800 w-full">
                 <div className="flex items-center justify-start text-sm">
-                    <span className="mx-4">
+                    <span className="mx-4 text-gray-900">
                         {index.toString().padStart(2, "0")}
                     </span>
-                    <span className={item.state === 3 ? "line-through" : ""}>
+                    <span className={item.state === 3 ? "line-through" : "text-gray-900"}>
                         {item.nameTickets}
                     </span>
                 </div>

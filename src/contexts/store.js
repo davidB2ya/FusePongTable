@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { getCompanysRequest } from "../api/axios";
+import { getCompanysRequest, getOneCompanyRequest } from "../api/axios";
 
 const appContext = createContext();
 
@@ -13,6 +13,7 @@ export const AppProvider = ({ children }) => {
 
     const [company, setCompany] = useState([]);
     const [companySelect, setCompanySelect] = useState({});
+    const [showProject, setShowProject] = useState();
 
     useEffect(() => {
         (async () => {
@@ -26,7 +27,7 @@ export const AppProvider = ({ children }) => {
     }
 
     const addUser = (user) => {
-        localStorage.setItem("User", JSON.stringify(user))
+        localStorage.setItem("User", JSON.stringify(user))        
     };
 
     const addCompany = (buss) => {
@@ -35,14 +36,18 @@ export const AppProvider = ({ children }) => {
 
 
     const signOut = () => {
-        localStorage.setItem("User", "")
-        localStorage.setItem("Company", "")
-    }
+        console.log("Sign Out")
+        localStorage.clear();
+    };
 
+    const activeProjects = (data) => {
+        setShowProject(data)
+        console.log(data)
+    };
         
     return (
         <appContext.Provider
-            value={{ company, companySelect, selectCompany,addCompany, addUser, signOut }}
+            value={{ company, companySelect, showProject, selectCompany,addCompany, addUser, signOut , activeProjects}}
         >
             {children}
         </appContext.Provider>

@@ -1,7 +1,12 @@
 import ItemTickekts from "./ItemTickekts"
+import { useApp } from "../contexts/store.js";
+
 
 const CardProject = ({ data }) => {
 
+    const { activeProjects } = useApp();
+
+    console.log(data)
     let count = 0
     const Count = () => {
         count++
@@ -15,12 +20,15 @@ const CardProject = ({ data }) => {
                         {data.company}
                         <span className="w-full text-sm text-gray-500 dark:text-gray-300  ml-2">
                             ({data.ticket.length})
-
                         </span>
                     </p>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-4 cursor-pointer text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                    <a href="/projects">
+                        <button className="" onClick={activeProjects(data)} >
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-4 cursor-pointer text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </button>
+                    </a>
                 </div>
                 <ul>
                     {data.ticket.map((ticket) => (
