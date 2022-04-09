@@ -1,70 +1,144 @@
-# Getting Started with Create React App
+# FusePong Table 📊
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. [Info General](#información-general )
+2. [Tecnologías](#tecnologías)
+3. [Instalación](#instalación)
+4. [Usuario](#usuario-prueba)
+5. [Pre-requisitos](#pre-requisitos)
+6. [Despliegue](#despliegue)
+7. [Librerías Usadas](#librerías-usadas)
+8. [Expresiones de Gratitud](#expresiones-de-gratitud)
 
-## Available Scripts
+***
 
-In the project directory, you can run:
+## Información General 💻
 
-### `npm start`
+##### En este proyecto se desea crear una aplicación web donde se pueda llevar el control del avance de diferentes proyectos de desarrollo, este proyecto esta dividido en historias de usuario las cuales hacen referencia a las funcionalidades globales de cada proyecto, y a su vez en cada historia de usuario se podrá levantar un ticket de desarrollo el cual hace referencia a una tarea específica de la historia de usuario a la que corresponde. El objetivo principal es poder levantar tickets o solicitudes de desarrollo para cada proyecto y poder verificar el estado del mismo.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+###### El usuario podrá desde una página web hacer lo siguiente:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Crear una cuenta, y asociarse a una compañía previamente creada (se deben crear varias compañías y estar disponibles a modo listado) 
 
-### `npm test`
+- Loguearse en la plataforma
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Crear una historia de usuario con su primer ticket (cada historia de usuario debe tener al menos un ticket)
 
-### `npm run build`
+- Levantar un ticket o solicitud de desarrollo completamente nuevo (debe estar relacionado a una historia de usuario)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Editar un ticket o solicitud de desarrollo que esté vinculado a una historia de usuario
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Poder ver un historial de tickets y su estado
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Cancelar un ticket activo
 
-### `npm run eject`
+##### El ticket debe estar asociado a una historia de usuario, debe tener un campo de comentarios y un estado (Activo: está creado por el usuario; En Proceso: que está en proceso de desarrollo; Finalizado: que ya salio del proceso de desarrollo)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- En cada proyecto debe haber al menos 2 tickets en estado de desarrollo y 2 tickets en estado Finalizado, esto con el fin de poder verlos y diferenciarlos en el historial.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Las compañías o empresas podrán tener varios proyectos relacionados (crear al menos 3 compañías con nombre, nit, teléfono, dirección y correo electrónico; de estas 3, una debe tener 1 proyecto y otra debe tener 2 proyectos). Esta información debe estar previamente creada y disponible en la página web.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Los proyectos pueden tener varias historias de usuario ( cada proyecto debe tener al menos 3 historias de usuario). Esta información debe estar previamente creada y disponible en la página web
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+>Toda la información debe estar alojada en una Base de datos creada exclusivamente para la prueba 
 
-## Learn More
+#### Ejemplos de Peticiones en La Api
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Logear un usuario `Post`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```http POST
+https://fusepong-api.herokuapp.com/api/login 
+```
+| Body                      | Type     | raw            | headers                            |
+| :--------                 | :------- | :------------- | :--------------------------------- |
+|"email" : "correo"         | **JSON** | **Required**.  |'Content-Type': 'application/json', |
+| "password" : "contraseña" |          |                |
+ 
 
-### Code Splitting
+* Registrarse 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```http POST
+https://fusepong-api.herokuapp.com/api/register 
+```
+| Body                                      | Type     | raw            | headers                            |
+| :--------                                 | :------- | :------------- | :--------------------------------- |
+|"email" : "correo"                         | **JSON** | **Required**.  |'Content-Type': 'application/json', |
+|"password" : "contraseña"                  |          |                |
+|"name" : "nombre completo"                 |          |                |
+|"phoneNumber" : "telefono"                 |          |                |
+|"id_company" : "compañía a que pertenece"  |          |                |
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Tecnologías 🔬
+* [React.JS](https://es.reactjs.org/): Version 17.0.2 
+* [Tailwind CSS](https://tailwindui.com/): Version 3.0.23
+* [Axios](https://sass-lang.com/): Version 0.26.1
 
-### Making a Progressive Web App
+***
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Instalación 📝
 
-### Advanced Configuration
+**Clonar repositorio**
+```bash
+git clone https://github.com/davidB2ya/FusePongTable.git
+```
+**Entrar a la direccion del proyecto**
+```bash
+cd FusePongTable/
+```
+**Instalar las dependencias del proyecto**
+```bash
+npm install 
+```
+**Iniciar el servidor en el entorno de desarrollo**
+```bash
+npm run start
+```
+Abre el navegador en el puerto: http://localhost:3001 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+***
 
-### Deployment
+## Usuario Prueba 😎
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- correo :  adminDavid@gmail.com
+- contraseña : 123456
 
-### `npm run build` fails to minify
+>O registrese y entre con su usuario
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+***
+## Pre-requisitos 📋
+
+- Node instalado
+- npm instalado version 7.23.0  o superior
+- Google Chrome // Mozilla Firefox // otros
+***
+
+## Despliegue 🚀
+
+_Aquí debajo dejo el link del proyecto desplegado_
+                👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
+
+* Deploy Frontend Vercel : https://fuse-pong-table.vercel.app/
+* Deploy Backend Heroku : https://fusepong-api.herokuapp.com/
+***
+
+## Librerías Usadas 🏛
+
+* **axios** : **_La utilizo para consultas a la api_**
+* **react** : **_La uso renderizar componentes de React.js_**
+* **react-dom** : **_La uso para manipolar el DOM con elementos de React.js_**
+* **react-icons** : **_La uso para renderizar iconos_**
+* **react-router-dom** : **_La uso para realizar las rutas de la app_**
+
+***
+
+## Expresiones de Gratitud 🎁
+
+* Comenta a otros sobre mi proyecto 📢
+* Invitame a una cerveza 🍺 o un café ☕️  
+* Da las gracias públicamente 🤓
+* etc.
+
+---
+⌨️ con ❤️ por [davidB2ya](https://david-bedoya.vercel.app) 😊👍🏻
+
+![Image text](https://i.ibb.co/2M675j0/Logo-David-04.png)

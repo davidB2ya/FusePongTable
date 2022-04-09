@@ -14,6 +14,7 @@ export const AppProvider = ({ children }) => {
     const [company, setCompany] = useState([]);
     const [companySelect, setCompanySelect] = useState({});
     const [showProject, setShowProject] = useState();
+    const [show, setShow] = useState(false)
 
     useEffect(() => {
         (async () => {
@@ -45,10 +46,14 @@ export const AppProvider = ({ children }) => {
         localStorage.removeItem("Project");
         localStorage.setItem("Project", JSON.stringify(data))
     };
+
+    const ShowModal =  () => {
+        setShow(!show)
+    };
         
     return (
         <appContext.Provider
-            value={{ company, companySelect, showProject, selectCompany,addCompany, addUser, signOut , activeProjects}}
+            value={{ company, companySelect, showProject, show, selectCompany,addCompany, addUser, signOut , activeProjects, ShowModal}}
         >
             {children}
         </appContext.Provider>

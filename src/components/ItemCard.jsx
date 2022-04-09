@@ -6,7 +6,7 @@ const ItemCard = () => {
     const Project = JSON.parse(window.localStorage.getItem("Project"))
 
     return (
-        <div className="shadow-lg rounded-2xl w-4/8 bg-white dark:bg-gray-800 p-4">
+        <div className="shadow-lg rounded-2xl w-4/8 bg-white dark:bg-gray-800 p-4 my-4">
             <div className="flex item-center justify-between px-4">
                 <p className="text-gray-800 dark:text-gray-50 text-2xl font-medium mb-4">
                     {Project.company}
