@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useApp } from '../contexts/store'
-import Alert from './Alert'
-import Dropdown from './Dropdown'
+import Alert from './Register/Alert'
+import Dropdown from './Register/Dropdown'
 
 const FormUpdateUser = () => {
 

@@ -1,38 +1,25 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import AlertInfo from './AlertInfo';
-import { useApp } from "../contexts/store.js";
+import { useApp } from "../../contexts/store.js";
 
 
 const LoginForm = () => {
 
-    const { addUser } = useApp();
+    const { Login } = useApp();
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [modal, setModal] = useState(false);
-    const [user, setUser] = useState([]);
-
-    const baseUrl = "https://fusepong-api.herokuapp.com"
+    const [userModal, setUser] = useState([]);
 
     async function loginUser(event) {
         event.preventDefault();
-        const response = await fetch(`${baseUrl}/api/login`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                email,
-                password
-            }),
-        });
 
-        const data = await response.json();
+        const login = await Login(email, password)
 
-        if (data.msg === 'Login success!') {
-            setUser(data)
-            addUser(data.user)
+        if (login.login === true) {
+            setUser(login.user)
             setModal(true)
             setTimeout(() => {
                 setModal(false)
@@ -42,7 +29,6 @@ const LoginForm = () => {
             alert("Ingreso fallido")
         }
     }
-
     async function registerUser() {
         navigate("/register")
     }
@@ -50,7 +36,7 @@ const LoginForm = () => {
     return (
         <div className="flex justify-center items-center my-10">
             {
-                modal === true ? <AlertInfo data={user} location="dashboard"/> : <div></div>
+                modal === true ? <AlertInfo data={userModal} location="dashboard" /> : <div></div>
             }
             <div className="flex justify-center items-center flex-col w-full max-w-md px-4 py-8 bg-white rounded-lg shadow dark:bg-gray-800 sm:px-6 md:px-8 lg:px-10">
                 <div className="self-center mb-6 text-xl font-light text-gray-600 sm:text-2xl dark:text-white">

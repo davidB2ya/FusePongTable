@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Dropdown from './Dropdown'
-import { useApp } from "../contexts/store.js";
-import Logo from '../assets/logo-fusepong.png'
+import { useApp } from "../../contexts/store.js";
+import Logo from '../../assets/logo-fusepong.png'
 import Alert from './Alert';
 
 const RegisterForm = () => {

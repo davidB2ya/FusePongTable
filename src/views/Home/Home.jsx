@@ -1,14 +1,14 @@
 import React from 'react'
-import Footer from '../../components/Footer'
-import Headers from '../../components/Headers'
-import Welcome from '../../components/Welcome'
+import Footer from '../../components/Home/Footer'
+import Headers from '../../components/Home/Headers'
+import Welcome from '../../components/Home/Welcome'
 
 const Home = () => {
   return (
     <div>
-        <Headers/>
-        <Welcome/>
-        <Footer/>
+      <Headers />
+      <Welcome />
+      <Footer />
     </div>
   )
 }

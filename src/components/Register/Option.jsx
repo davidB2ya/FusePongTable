@@ -1,5 +1,5 @@
 import React from 'react'
-import { useApp } from "../contexts/store.js";
+import { useApp } from "../../contexts/store.js";
 
 const Option = ({ data }) => {
 

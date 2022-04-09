@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { getCompanysRequest, getOneCompanyRequest } from "../api/axios";
 
 const appContext = createContext();
@@ -11,49 +11,91 @@ export const useApp = () => {
 
 export const AppProvider = ({ children }) => {
 
-    const [company, setCompany] = useState([]);
+    const [user, setUser] = useState([])
+    const [company, setCompany] = useState([])
+    const [project, setProject] = useState([])
+
+    const baseUrl = "https://fusepong-api.herokuapp.com"
+
+    const [listcompany, setListCompany] = useState([]);
     const [companySelect, setCompanySelect] = useState({});
     const [showProject, setShowProject] = useState();
     const [show, setShow] = useState(false)
+    const [updated, setUpdated] = useState(false)
+
 
     useEffect(() => {
         (async () => {
             const res = await getCompanysRequest();
-            setCompany(res.data.message);
+            setListCompany(res.data.message);
         })();
     }, []);
+
+    async function Login(email, password) {
+
+        const response = await fetch(`${baseUrl}/api/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email,
+                password
+            }),
+        });
+        const data = await response.json();
+
+        if (data.msg === 'Login success!') {
+            setUser(data.user)
+            localStorage.setItem("User", JSON.stringify(data.user))
+            const res = await getOneCompanyRequest(data.user.id_company)
+            setCompany(res.data.message)
+            localStorage.setItem("Company", JSON.stringify(res.data.message))
+            return {
+                login: true,
+                user: data.user
+            }
+
+        } else return false
+    }
+
+    const mounted = useRef();
+    useEffect(() => {
+        if (!mounted.current) {
+            // do componentDidMount logic
+            mounted.current = true;
+        } else {
+            // do componentDidUpdate logic
+        }
+    });
 
     const selectCompany = (select) => {
         setCompanySelect(select)
     }
 
-    const addUser = (user) => {
-        localStorage.setItem("User", JSON.stringify(user))        
+    const activeProjects = (data) => {
+        setShowProject(data)
+        setProject(data)
+        localStorage.removeItem("Project");
+        localStorage.setItem("Project", JSON.stringify(data))
     };
 
-    const addCompany = (buss) => {
-        localStorage.setItem("Company", JSON.stringify(buss))
+    const ShowModal = () => {
+        setShow(!show)
     };
 
+    const Updated = () => {
+        setUpdated(!updated)
+    }
 
     const signOut = () => {
         console.log("Sign Out")
         localStorage.clear();
     };
 
-    const activeProjects = (data) => {
-        setShowProject(data)
-        localStorage.removeItem("Project");
-        localStorage.setItem("Project", JSON.stringify(data))
-    };
-
-    const ShowModal =  () => {
-        setShow(!show)
-    };
-        
     return (
         <appContext.Provider
-            value={{ company, companySelect, showProject, show, selectCompany,addCompany, addUser, signOut , activeProjects, ShowModal}}
+            value={{ user, company, listcompany, companySelect, showProject, show, updated, project, Login, Updated, selectCompany, signOut, activeProjects, ShowModal }}
         >
             {children}
         </appContext.Provider>

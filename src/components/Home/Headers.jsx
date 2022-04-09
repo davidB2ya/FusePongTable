@@ -1,6 +1,6 @@
 import { Disclosure } from '@headlessui/react'
 import {  MenuIcon, XIcon } from '@heroicons/react/outline'
-import Logo from '../assets/logo-fusepong.png'
+import Logo from '../../assets/logo-fusepong.png'
 
 const navigation = [
     { name: 'Inicio', href: '/', current: true },

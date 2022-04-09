@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import Font from '../assets/undraw_Tasting_re_3k5a.png'
-import Font2 from '../assets/undraw_add_information_j2wg.png'
-import { useApp } from '../contexts/store.js'
+import Font from '../../assets/undraw_Tasting_re_3k5a.png'
+import Font2 from '../../assets/undraw_add_information_j2wg.png'
+import { useApp } from '../../contexts/store.js'
 
 const Welcome = () => {
 

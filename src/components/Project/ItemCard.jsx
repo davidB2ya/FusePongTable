@@ -1,15 +1,28 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import Accordion from './Accordion'
+
+import { useApp } from "../../contexts/store.js";
+import { getTickestRequest } from '../../api/axios';
 
 const ItemCard = () => {
 
     const Project = JSON.parse(window.localStorage.getItem("Project"))
+    
+    const { activeProjects } = useApp();
+    const { updated } = useApp();
+
+    useEffect(() => {
+        (async () => {
+            const res = await getTickestRequest(Project.project.id);
+            activeProjects(res)
+        })();
+    }, [updated]);
 
     return (
         <div className="shadow-lg rounded-2xl w-4/8 bg-white dark:bg-gray-800 p-4 my-4">
             <div className="flex item-center justify-between px-4">
                 <p className="text-gray-800 dark:text-gray-50 text-2xl font-medium mb-4">
-                    {Project.company}
+                    {Project.project.name}
                 </p>
                 <p className="text-gray-900 dark:text-white text-3xl font-bold">
                     {Project.ticket.length}

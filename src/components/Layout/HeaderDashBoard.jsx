@@ -1,25 +1,9 @@
-import React, { useState } from 'react'
-import { getOneCompanyRequest } from '../api/axios'
-import { useApp } from "../contexts/store.js";
+import React from 'react'
 
 const HeaderDashBoard = () => {
 
-    const { addCompany } = useApp();
     const User = JSON.parse(window.localStorage.getItem("User"))
     const DataCompany = JSON.parse(window.localStorage.getItem("Company"))
-
-    const init = async () => {
-        if (DataCompany === null) {
-            const res = await getOneCompanyRequest(User.id_company)
-            setCompany(res.data.message);
-            addCompany(res.data.message)
-        } else {
-            setCompany(DataCompany)
-        }
-    }
-
-    const [company, setCompany] = useState([], init())
-
 
     return (
         <div>
@@ -34,7 +18,7 @@ const HeaderDashBoard = () => {
                                     </a>
                                 </div>
                                 <div>
-                                    <a className="w-full font-thin uppercase text-blue-500 flex items-center p-4 my-2 transition-colors duration-200 justify-start bg-gradient-to-r from-white to-blue-100 border-r-4 border-blue-500 dark:from-gray-700 dark:to-gray-800 "  href="/dashboard">
+                                    <a className="w-full font-thin uppercase text-blue-500 flex items-center p-4 my-2 transition-colors duration-200 justify-start bg-gradient-to-r from-white to-blue-100 border-r-4 border-blue-500 dark:from-gray-700 dark:to-gray-800 " href="/dashboard">
                                         <span className="text-left">
                                             <svg width="20" height="20" fill="currentColor" viewBox="0 0 2048 1792" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M1070 1178l306-564h-654l-306 564h654zm722-282q0 182-71 348t-191 286-286 191-348 71-348-71-286-191-191-286-71-348 71-348 191-286 286-191 348-71 348 71 286 191 191 286 71 348z">
@@ -46,19 +30,6 @@ const HeaderDashBoard = () => {
                                         </span>
                                     </a>
                                 </div>
-                                {/* <div className="relative flex items-center w-full lg:w-64 h-full group">
-                            <div className="absolute z-50 flex items-center justify-center  w-auto h-10 p-3 pr-2 text-sm text-gray-500 uppercase cursor-pointer sm:hidden">
-                                <svg fill="none" className="relative w-5 h-5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z">
-                                    </path>
-                                </svg>
-                            </div>
-                            <svg className="absolute left-0 z-20 hidden w-4 h-4 ml-4 text-gray-500 pointer-events-none fill-current group-hover:text-gray-400 sm:block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z">
-                                </path>
-                            </svg>
-                            <input type="text" className="block w-full py-1.5 pl-10 pr-4 leading-normal rounded-2xl focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 ring-opacity-90 bg-gray-100 dark:bg-gray-800 text-gray-400 aa-input" placeholder="Search" />
-                        </div> */}
                             </div>
                             <div className="relative p-1 flex items-center justify-end w-1/4 ml-5 mr-4 sm:mr-0 sm:right-auto">
                                 <img alt="profil" src={DataCompany.logoCompany} className="mx-auto object-cover h-10 w-10 " />

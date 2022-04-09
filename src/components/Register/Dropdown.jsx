@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { createPopper } from "@popperjs/core";
 import Option from "./Option";
-import { useApp } from "../contexts/store.js";
+import { useApp } from "../../contexts/store.js";
 
 const Dropdown = ({ color }) => {
     // dropdown props
@@ -23,8 +23,8 @@ const Dropdown = ({ color }) => {
         ? (bgColor = "bg-blue-500-500")
         : (bgColor = "bg-slate-700");
 
-    const { company } = useApp();
-    const data = company
+    const { listcompany } = useApp();
+    const data = listcompany
 
     return (
         <>

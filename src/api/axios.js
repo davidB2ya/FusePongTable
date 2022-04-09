@@ -3,6 +3,14 @@ import axios from "axios";
 // const baseUrl = "http://localhost:3001"
 const baseUrl = "https://fusepong-api.herokuapp.com"
 
+export const loginResquest = async (body) => {
+    return await axios.post(`${baseUrl}/api/login`, body, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+}
+
 export const getCompanysRequest = async () => await axios.get(`${baseUrl}/api/company/all-companys`);
 
 export const getProjectsRequest = async (id) => await axios.get(`${baseUrl}/api/projects/all-projects/${id}`);
@@ -17,14 +25,23 @@ export const getTasksRequest = async (id) => await axios.get(`${baseUrl}/api/das
 
 export const getOneCompanyRequest = async (id) => await axios.get(`${baseUrl}/api/company/one/${id}`);
 
+export const postTikecktRequest = async (body) => {
+    return await axios.post(`${baseUrl}/api/tickets/create-ticket`, body, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+}
+
+
+
 export const getOneTikecktsRequest = async (id) => await axios.get(`${baseUrl}/api/tickets/one/${id}`);
 
 export const updateTickectRequest = async (id, fields) => {
-    return axios.put(`${baseUrl}/api/tickets/update-ticket/${id}`, fields);
+    await axios.put(`${baseUrl}/api/tickets/update-ticket/${id}`, fields);
 };
 
-// export const deletePostRequest = async (id) =>
-//   await axios.delete("/api/posts/" + id);
+export const deleteTickectRequest = async (id) => await axios.delete(`${baseUrl}/api/tickets/delete-ticket/${id}`);
 
 // export const createPostRequest = async (post) => {
 //   const form = new FormData();

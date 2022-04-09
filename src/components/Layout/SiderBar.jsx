@@ -1,14 +1,7 @@
 import React from 'react'
-import { useApp } from "../contexts/store.js";
-import Logo from '../assets/logo-fusepong.png'
+import Logo from '../../assets/logo-fusepong.png'
 
 const SiderBar = ({ location }) => {
-
-    // const { signOut } = useApp();
-
-    // const SignOut = () => {
-    //     signOut()
-    // }
 
     return (
         <div className="h-screen hidden lg:block my-4 ml-4 shadow-lg relative w-80">
@@ -59,7 +52,7 @@ const SiderBar = ({ location }) => {
                         <a className="w-full font-thin uppercase text-gray-500 dark:text-gray-200 flex items-center p-4 my-2 transition-colors duration-200 justify-start hover:text-blue-500" href="/home">
                             <span className="text-left">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                    <path stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                                 </svg>
                             </span>
                             <span className="mx-4 text-sm font-normal">
