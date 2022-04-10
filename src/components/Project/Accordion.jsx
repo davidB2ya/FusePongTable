@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { deleteTickectRequest, getOneProjectRequest, getOneTikecktsRequest, updateTickectRequest } from '../../api/axios.js';
+import { deleteTickectRequest,  getOneTikecktsRequest, updateTickectRequest } from '../../api/axios.js';
+import { useNavigate } from 'react-router-dom';
 
 const Accordion = ({ data }) => {
+
+    const navigate = useNavigate();
+
 
     const Project = JSON.parse(window.localStorage.getItem("Project"))
     const [ticketData, setTicketData] = useState([])
@@ -33,12 +37,13 @@ const Accordion = ({ data }) => {
         }
     };
 
-    const DeleteTicket = () => {
-        const res = deleteTickectRequest(ticketData.id);
+    async function DeleteTicket  () {
+        const res = await deleteTickectRequest(ticketData.id);
+        navigate("/dashboard")
         if (res.message === "Ticket removed successfully!") {
             setUpdated(!updated)
+            navigate("/dashboard")
         }
-
     };
 
 

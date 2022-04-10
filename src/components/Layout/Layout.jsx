@@ -10,6 +10,7 @@ import Traking from '../DashBoard/Traking';
 import ItemCard from '../Project/ItemCard';
 import Modal from '../Project/Modal';
 import FormUpdateUser from '../FormUpdateUser';
+import InfoAlert from '../Project/InfoAlert.jsx';
 
 
 const Layout = ({ location }) => {
@@ -53,7 +54,7 @@ const Layout = ({ location }) => {
         return (
           Project === null ?
             <div>
-              <h1>Seleccione un Proyecto</h1>
+              <InfoAlert />
             </div>
             :
             <div>
@@ -77,6 +78,7 @@ const Layout = ({ location }) => {
       default:
         return (
           <main class="overflow-auto h-screen pb-24 px-4 md:px-6">
+
             <Traking all={allProjects} active={activeProjects} hold={awaitProjects} />
             <div className=" pb-24 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
               <div className=" pb-24 px-4 md:px-6">

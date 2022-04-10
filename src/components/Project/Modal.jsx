@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { useApp } from "../../contexts/store.js";
 
+import { useNavigate } from 'react-router-dom';
+
 const Modal = () => {
 
+    const navigate = useNavigate();
     const Project = JSON.parse(window.localStorage.getItem("Project"))
     const User = JSON.parse(window.localStorage.getItem("User"))
 
@@ -37,6 +40,7 @@ const Modal = () => {
             alert('Ticket has been created')
             setDescription("")
             setTitle("")
+            navigate("/dashboard")
         } else {
             alert('Ticket not')
         }

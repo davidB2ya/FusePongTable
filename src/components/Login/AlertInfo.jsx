@@ -7,7 +7,7 @@ const AlertInfo = ({ data, location }) => {
     
     return (
         
-                <div className="absolute z-20">
+                <div className="bg-gray-100/50 absolute z-20">
                     <div className=" shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-800 w-64 m-auto">
                         <div className="w-full h-full text-center">
                             <div className="flex h-full flex-col justify-between">

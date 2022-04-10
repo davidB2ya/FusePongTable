@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { useApp } from '../contexts/store'
 import Alert from './Register/Alert'
-import Dropdown from './Register/Dropdown'
+import SelectMenus from './Register/SelectMenus'
+import { useNavigate } from 'react-router-dom';
 
 const FormUpdateUser = () => {
 
-
+    const navigate = useNavigate();
     const User = JSON.parse(window.localStorage.getItem("User"))
     const DataCompany = JSON.parse(window.localStorage.getItem("Company"))
 
@@ -14,11 +15,11 @@ const FormUpdateUser = () => {
     const [text, setText] = useState("Ver")
     const [stateAlert, setStateAlert] = useState(false);
     const [alert, setAlert] = useState(false);
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [avatar, setAvatar] = useState('');
-    const [password, setPassword] = useState('');
-    const [phoneNumber, setPhone] = useState('');
+    const [name, setName] = useState(User.name);
+    const [email, setEmail] = useState(User.email);
+    const [avatar, setAvatar] = useState(User.avatar);
+    const [password, setPassword] = useState(User.passwordHash);
+    const [phoneNumber, setPhone] = useState(User.phoneNumber);
 
     const baseUrl = "https://fusepong-api.herokuapp.com"
     const { companySelect } = useApp();
@@ -40,8 +41,8 @@ const FormUpdateUser = () => {
 
     async function registerUser(event) {
         event.preventDefault();
-        const response = await fetch(`${baseUrl}/api/`, {
-            method: 'POST',
+        const response = await fetch(`${baseUrl}/api/users/update-user/${User.id}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -50,15 +51,19 @@ const FormUpdateUser = () => {
                 email,
                 password,
                 phoneNumber,
+                avatar,
                 id_company
             }),
         });
 
         const data = await response.json();
 
-        if (data.message === 'User has been create!') {
+        if (data.message === 'User updated successfully!') {
             setStateAlert(true);
             setAlert(true);
+            setTimeout(() => {
+                navigate("/")
+            }, 2000);
         } else {
             setAlert(true);
         }
@@ -67,7 +72,7 @@ const FormUpdateUser = () => {
     return (
         <div>
             <section className="h-screen bg-opacity-50 my-10">
-                {alert === true && <Alert state={stateAlert} />}
+                {alert === true && <Alert state={stateAlert} location="profile"/>}
                 <form className="container max-w-2xl mx-auto shadow-md md:w-3/4" >
                     <div className="p-8 bg-gray-100 border-t-2 border-blue-400 rounded-lg bg-opacity-5">
                         <div className="max-w-sm mx-auto md:w-full md:mx-0">
@@ -87,7 +92,13 @@ const FormUpdateUser = () => {
                             </h2>
                             <div className="max-w-sm mx-auto md:w-2/3">
                                 <div className=" relative ">
-                                    <input type="text" id="user-info-email" value={User.email} onChange={(e) => setEmail(e.target.value)} className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Correo" />
+                                    <input
+                                        type="email"
+                                        id="user-info-email"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
+                                        placeholder="Correo" />
                                 </div>
                             </div>
                         </div>
@@ -97,18 +108,17 @@ const FormUpdateUser = () => {
                             </h2>
                             <div className="max-w-sm mx-auto md:w-2/3">
                                 <div className=" relative ">
-                                    <input type="text" id="user-info-email" value={User.avatar} onChange={(e) => setAvatar(e.target.value)} className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Url Imagen" />
+                                    <input type="text" id="user-info-email" value={avatar} onChange={(e) => setAvatar(e.target.value)} className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Url Imagen" />
                                 </div>
                             </div>
                         </div>
                         <div className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
                             <h2 className="max-w-sm mx-auto md:w-1/3">
-                                Perteneces a la Compañía ?
+                                Perteneces a la Compañía 
                             </h2>
-                            {select === null ? <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">{DataCompany.nameCompany}</span> :
-                                <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">{select.name}</span>
-                            }
-                            <Dropdown color="white" />
+                            <div className="max-w-sm mx-auto md:w-2/3">
+                                <SelectMenus />
+                            </div>
                         </div>
 
                         <hr />
@@ -119,12 +129,12 @@ const FormUpdateUser = () => {
                             <div className="max-w-sm mx-auto space-y-5 md:w-2/3">
                                 <div>
                                     <div className=" relative ">
-                                        <input type="text" value={User.name} onChange={(e) => setName(e.target.value)} id="user-info-name" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Nombre completo" />
+                                        <input type="text" value={name} onChange={(e) => setName(e.target.value)} id="user-info-name" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Nombre completo" />
                                     </div>
                                 </div>
                                 <div>
                                     <div className=" relative ">
-                                        <input type="text" value={User.phoneNumber} onChange={(e) => setPhone(e.target.value)} id="user-info-phone" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Número de teléfono" />
+                                        <input type="text" value={phoneNumber} onChange={(e) => setPhone(e.target.value)} id="user-info-phone" className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Número de teléfono" />
                                     </div>
                                 </div>
                             </div>
@@ -136,7 +146,7 @@ const FormUpdateUser = () => {
                             </h2>
                             <div className="max-w-sm mx-auto md:w-2/3">
                                 <div className=" relative ">
-                                    <input autoComplete="off" type={type} id="user-info-password" value={User.passwordHash} onChange={(e) => setPassword(e.target.value)} className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Contraseña" />
+                                    <input autoComplete="off" type={type} id="user-info-password" value={password} onChange={(e) => setPassword(e.target.value)} className=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" placeholder="Contraseña" />
                                     <button onClick={ViewPass} className="btn mx-2">{text} Contraseña</button>
                                 </div>
                             </div>

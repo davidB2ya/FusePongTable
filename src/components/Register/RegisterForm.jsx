@@ -64,7 +64,7 @@ const RegisterForm = () => {
     return (
 
         <section className="h-screen bg-opacity-50 my-10">
-            {alert === true && <Alert state={stateAlert} />}
+            {alert === true && <Alert state={stateAlert} location="register" />}
             <form className="container max-w-2xl mx-auto shadow-md md:w-3/4" onSubmit={registerUser}>
                 <div className="p-4 bg-gray-100 border-t-2 border-blue-400 rounded-lg bg-opacity-5">
                     <div className="max-w-sm mx-auto md:w-full md:mx-0">
