@@ -25,6 +25,8 @@ export const getTasksRequest = async (id) => await axios.get(`${baseUrl}/api/das
 
 export const getOneCompanyRequest = async (id) => await axios.get(`${baseUrl}/api/company/one/${id}`);
 
+export const getOneProjectRequest = async (id) => await axios.get(`${baseUrl}/api/projects/one/${id}`);
+
 export const postTikecktRequest = async (body) => {
     return await axios.post(`${baseUrl}/api/tickets/create-ticket`, body, {
         headers: {

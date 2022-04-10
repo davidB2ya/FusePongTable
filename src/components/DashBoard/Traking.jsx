@@ -2,7 +2,7 @@ import React from 'react'
 
 const Traking = ({ all, active, hold }) => {
     return (
-        <div className="flex justify-between ">
+        <div className="flex justify-between mx-2">
             <div className="w-1/4 ">
                 <div className="rounded-xl shadow-lg px-4 my-2 py-6 w-full bg-white dark:bg-gray-700 relative">
                     <p className="text-gray-400 text-sm text-center">

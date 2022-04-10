@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Dropdown from './Dropdown'
+import SelectMenus from './SelectMenus'
 import { useApp } from "../../contexts/store.js";
 import Logo from '../../assets/logo-fusepong.png'
 import Alert from './Alert';
@@ -52,7 +52,7 @@ const RegisterForm = () => {
         });
 
         const data = await response.json();
-        console.log(data)
+
         if (data.message === 'User has been create!') {
             setStateAlert(true);
             setAlert(true);
@@ -90,12 +90,11 @@ const RegisterForm = () => {
                     </div>
                     <div className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
                         <h2 className="max-w-sm mx-auto md:w-1/3">
-                            Perteneces a la Compañía 
+                            Perteneces a la Compañía
                         </h2>
-                        {select === 0 ? null :
-                            <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800">{select.name}</span>
-                        }
-                        <Dropdown color="white" />
+                        <div className="max-w-sm mx-auto md:w-2/3">
+                            <SelectMenus />
+                        </div>
                     </div>
 
                     <hr />

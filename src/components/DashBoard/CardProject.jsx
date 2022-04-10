@@ -26,11 +26,15 @@ const CardProject = ({ data }) => {
                         </span>
                     </p>
                     <a href="/projects">
-                        <button onClick={GetProject} >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-4 cursor-pointer text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <button type="button" data-tooltip-target="tooltip-left" data-tooltip-placement="left" onClick={GetProject} >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-4 cursor-pointer text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
                             </svg>
                         </button>
+                        <div id="tooltip-left" role="tooltip" className="inline-block absolute invisible z-50 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-1 tooltip dark:bg-gray-700">
+                            Información
+                            <div className="tooltip-arrow" data-popper-arrow></div>
+                        </div>
                     </a>
                 </div>
                 <ul>

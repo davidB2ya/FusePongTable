@@ -5,7 +5,7 @@ import Dropdown from './Register/Dropdown'
 
 const FormUpdateUser = () => {
 
-    
+
     const User = JSON.parse(window.localStorage.getItem("User"))
     const DataCompany = JSON.parse(window.localStorage.getItem("Company"))
 
@@ -55,7 +55,7 @@ const FormUpdateUser = () => {
         });
 
         const data = await response.json();
-        console.log(data)
+
         if (data.message === 'User has been create!') {
             setStateAlert(true);
             setAlert(true);
@@ -69,7 +69,7 @@ const FormUpdateUser = () => {
             <section className="h-screen bg-opacity-50 my-10">
                 {alert === true && <Alert state={stateAlert} />}
                 <form className="container max-w-2xl mx-auto shadow-md md:w-3/4" >
-                    <div className="p-4 bg-gray-100 border-t-2 border-blue-400 rounded-lg bg-opacity-5">
+                    <div className="p-8 bg-gray-100 border-t-2 border-blue-400 rounded-lg bg-opacity-5">
                         <div className="max-w-sm mx-auto md:w-full md:mx-0">
                             <div className="relative flex items-center justify-between ">
                                 <img alt="profil" src={User.avatar} className="absolute mx-auto object-cover rounded-full h-16 w-16 " />

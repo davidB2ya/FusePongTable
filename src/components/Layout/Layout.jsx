@@ -23,6 +23,7 @@ const Layout = ({ location }) => {
 
   const { ShowModal } = useApp();
   const { show } = useApp();
+  const { updated } = useApp();
 
   useEffect(() => {
     (async () => {
@@ -44,12 +45,12 @@ const Layout = ({ location }) => {
       const res = await getTasksRequest(User.id_company)
       setDataTasks(res.data.message);
     })();
-  }, []);
+  }, [updated]);
 
   const Section = () => {
     switch (location) {
       case "projects":
-        return (  
+        return (
           Project === null ?
             <div>
               <h1>Seleccione un Proyecto</h1>
@@ -68,17 +69,17 @@ const Layout = ({ location }) => {
 
       case "profile":
         return (
-          <div className="overflow-auto h-screen pb-24 px-4 md:px-6">
+          <div className="overflow-auto h-screen pb-60 px-4 md:px-6">
             <FormUpdateUser />
           </div>
         )
 
       default:
         return (
-          <div>
+          <main class="overflow-auto h-screen pb-24 px-4 md:px-6">
             <Traking all={allProjects} active={activeProjects} hold={awaitProjects} />
-            <div className="overflow-auto h-screen pb-24 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
-              <div className="overflow-auto h-screen pb-24 px-4 md:px-6">
+            <div className=" pb-24 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
+              <div className=" pb-24 px-4 md:px-6">
                 <div className="flex-wrap sm:flex-row ">
                   {dataTasks.length === 0 ? null : <div>
                     {dataTasks.map((task) => (
@@ -86,8 +87,13 @@ const Layout = ({ location }) => {
                     ))}
                   </div>
                   }
+                  <button onClick={() => ShowModal()} type="button" className="py-2 px-4 my-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                    Nuevo Proyecto
+                  </button>
                 </div>
+
               </div>
+
             </div>
             <a href="/home">
               <span className="text-left fixed right-10 bottom-10 bg-red-600 text-white rounded-2xl p-3">
@@ -96,7 +102,7 @@ const Layout = ({ location }) => {
                 </svg>
               </span>
             </a>
-          </div>
+          </main>
         )
     }
 
@@ -104,10 +110,10 @@ const Layout = ({ location }) => {
 
   return (
     <div>
-      <main className={location === "profile" ? "bg-gray-100 dark:bg-gray-800 rounded-2xl overflow-hidden relative h-full" : "bg-gray-100 dark:bg-gray-800 rounded-2xl h-screen overflow-hidden relative"}>
+      <main className="bg-gray-100 dark:bg-gray-800 rounded-2xl h-screen overflow-hidden relative">
         <div className="flex items-start justify-between">
           <SiderBar location={location} />
-          <div className="flex flex-col w-full pl-0 md:p-4 md:space-y-4">
+          <div className="flex flex-col w-full h-full pl-0 md:p-4 md:space-y-4">
             <HeaderDashBoard />
             {Section()}
           </div>
