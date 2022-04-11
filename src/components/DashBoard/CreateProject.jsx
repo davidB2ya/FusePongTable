@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useApp } from "../../contexts/store.js";
+import swal from "sweetalert"
 
 const CreateProject = () => {
 
@@ -31,13 +32,24 @@ const CreateProject = () => {
         const data = await response.json();
 
         if (data.message === 'Project has been create!') {
-            // <GeneralAlert state="true" text="Se creó un nuevo Proyecto"/>
-            alert('Se creó un nuevo Proyecto!')
-            setName("")
-            window.location.replace('');
+            swal({
+                title:"Exelente",
+                text: "Se creó un nuevo Proyecto",
+                icon: "success",
+                buttons: "Aceptar"
+            }).then(response =>{
+                if(response){
+                    setName("")
+                    window.location.replace('');
+                }
+            })
         } else {
-            // <GeneralAlert state="false" text="No se creó el Proyecto"/>
-            alert('No se creó el Proyecto')
+            swal({
+                title:"Lo siento",
+                text: "No se creó el Proyecto",
+                icon: "error",
+                buttons: "Aceptar"
+            })
         }
     };
 

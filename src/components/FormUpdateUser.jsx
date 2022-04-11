@@ -3,6 +3,7 @@ import { useApp } from '../contexts/store'
 import Alert from './Register/Alert'
 import SelectMenus from './Register/SelectMenus'
 import { useNavigate } from 'react-router-dom';
+import swal from "sweetalert"
 
 const FormUpdateUser = () => {
 
@@ -61,11 +62,24 @@ const FormUpdateUser = () => {
         if (data.message === 'User updated successfully!') {
             setStateAlert(true);
             setAlert(true);
-            setTimeout(() => {
-                navigate("/")
-            }, 2000);
+            swal({
+                title: "Se actualizó el perfil",
+                text: "Debes reiniciar la sección",
+                icon: "success",
+                buttons: "Aceptar"
+            }).then(response => {
+                if (response) {
+                    navigate("/")
+                }
+            })
         } else {
             setAlert(true);
+            swal({
+                title:"Error",
+                text: "No se pudo editar, intentelo de nuevo",
+                icon: "error",
+                buttons: "Aceptar"
+            })
         }
     }
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import AlertInfo from './AlertInfo';
 import { useApp } from "../../contexts/store.js";
+import swal from "sweetalert"
 
 
 const LoginForm = () => {
@@ -26,7 +27,12 @@ const LoginForm = () => {
                 navigate("/dashboard")
             }, 1500);
         } else {
-            alert("Ingreso fallido")
+            swal({
+                title:"Error",
+                text: "Su correo o contraseña son incorrectas",
+                icon: "error",
+                buttons: "Aceptar"
+            })
         }
     }
     async function registerUser() {

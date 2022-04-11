@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { deleteTickectRequest, getOneTikecktsRequest, updateTickectRequest } from '../../api/axios.js';
 import { useNavigate } from 'react-router-dom';
+import swal from "sweetalert"
 
 const Accordion = ({ data }) => {
 
@@ -29,6 +30,12 @@ const Accordion = ({ data }) => {
         setLoading(true)
         setTimeout(() => {
             setLoading(false)
+            swal({
+                title: "Super!",
+                text: "Se actualizó el Ticket",
+                icon: "success",
+                buttons: "Aceptar"
+            })
         }, 1000);
         if (res.message === 'Ticket updated successfully!') {
             alert('Se actualizo el Ticket')
@@ -40,12 +47,28 @@ const Accordion = ({ data }) => {
     };
 
     async function DeleteTicket() {
-        const res = await deleteTickectRequest(ticketData.id);
-        navigate("/dashboard")
-        if (res.message === "Ticket removed successfully!") {
-            setUpdated(!updated)
-            navigate("/dashboard")
-        }
+        swal({
+            title: "Eliminar",
+            text: "Estás seguro que desea eliminar el Ticket?",
+            icon: "warning",
+            buttons: ["No", "Seguro"]
+        }).then(response => {
+            if (response) {
+                deleteTickectRequest(ticketData.id);
+                swal({
+                    title: "Eliminado",
+                    text: "Se eliminó el Ticket",
+                    icon: "success",
+                    buttons: "Aceptar"
+                }).then(response => {
+                    if (response) {
+                        setUpdated(!updated)
+                        navigate("/dashboard")
+                    }
+                })
+            }
+        })
+        
     };
 
 

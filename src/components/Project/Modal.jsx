@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useApp } from "../../contexts/store.js";
-
+import swal from "sweetalert"
 import { useNavigate } from 'react-router-dom';
 
 const Modal = () => {
@@ -37,13 +37,26 @@ const Modal = () => {
         const data = await response.json();
 
         if (data.message === 'Ticket has been create!') {
-            alert('Ticket has been created')
-            setDescription("")
-            setTitle("")
-            ShowModal()
-            navigate("/dashboard")
+            swal({
+                title: "Exelente",
+                text: "Se creó una nueva Historia",
+                icon: "success",
+                buttons: "Aceptar"
+            }).then(response => {
+                if (response) {
+                    setDescription("")
+                    setTitle("")
+                    ShowModal()
+                    navigate("/dashboard")
+                }
+            })
         } else {
-            alert('Ticket not')
+            swal({
+                title: "Error",
+                text: "No se pudo crear la Historia",
+                icon: "error",
+                buttons: "Aceptar"
+            })
         }
     };
 
