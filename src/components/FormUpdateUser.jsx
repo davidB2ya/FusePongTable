@@ -64,7 +64,7 @@ const FormUpdateUser = () => {
             setAlert(true);
             swal({
                 title: "Se actualizó el perfil",
-                text: "Debes reiniciar la sección",
+                text: "Debes reiniciar la sesión",
                 icon: "success",
                 buttons: "Aceptar"
             }).then(response => {
