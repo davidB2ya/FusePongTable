@@ -38,7 +38,7 @@ const Modal = () => {
 
         if (data.message === 'Ticket has been create!') {
             swal({
-                title: "Exelente",
+                title: "Excelente",
                 text: "Se creó una nueva Historia",
                 icon: "success",
                 buttons: "Aceptar"

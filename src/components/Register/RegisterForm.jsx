@@ -3,6 +3,7 @@ import SelectMenus from './SelectMenus'
 import { useApp } from "../../contexts/store.js";
 import Logo from '../../assets/logo-fusepong.png'
 import Alert from './Alert';
+import swal from "sweetalert"
 
 const RegisterForm = () => {
 
@@ -56,8 +57,20 @@ const RegisterForm = () => {
         if (data.message === 'User has been create!') {
             setStateAlert(true);
             setAlert(true);
+            swal({
+                title: "Excelente",
+                text: "Usuario registrado satisfactorimente",
+                icon: "success",
+                buttons: "Aceptar"
+            })
         } else {
             setAlert(true);
+            swal({
+                title:"Lo siento",
+                text: "Ocurrio un error",
+                icon: "error",
+                buttons: "Aceptar"
+            })
         }
     }
 

@@ -33,7 +33,7 @@ const CreateProject = () => {
 
         if (data.message === 'Project has been create!') {
             swal({
-                title:"Exelente",
+                title:"Excelente",
                 text: "Se creó un nuevo Proyecto",
                 icon: "success",
                 buttons: "Aceptar"
