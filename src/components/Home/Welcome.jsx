@@ -23,11 +23,11 @@ const Welcome = () => {
                         <h1 className="font-bebas-neue uppercase text-6xl sm:text-7xl font-black flex flex-col leading-none dark:text-white text-gray-800">
                             Fuse pong
                             <span className="text-5xl sm:text-6xl">
-                                Table
+                                Plannig
                             </span>
                         </h1>
                         <p className="text-sm sm:text-base my-4 text-gray-700 dark:text-white">
-                            Acompañamos el proceso de Transformación Digital de tu empresa. A través de Soluciones Tecnológicas Amigables que se adapten a tus necesidades.
+                            Acompañamos el proceso de <b>Transformación Digital</b> de tu empresa. A través de <b>Soluciones Tecnológicas Amigables</b> que se adapten a tus <b>Necesidades</b>.
                         </p>
                         <div className="flex mt-8">
                             <a href="/login" className="uppercase py-2 px-4 rounded-lg bg-blue-500 border-2 border-transparent text-white text-md mr-4 hover:bg-green-500">

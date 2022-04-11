@@ -1,4 +1,4 @@
-import React  from 'react'
+import React from 'react'
 import Accordion from './Accordion'
 
 const ItemCard = () => {
@@ -32,7 +32,7 @@ const ItemCard = () => {
                     </div>
                 }
             </div>
-            
+
         </div>
     )
 }

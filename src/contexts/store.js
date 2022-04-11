@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { getCompanysRequest, getOneCompanyRequest } from "../api/axios";
 
 const appContext = createContext();
@@ -58,16 +58,6 @@ export const AppProvider = ({ children }) => {
 
         } else return false
     }
-
-    const mounted = useRef();
-    useEffect(() => {
-        if (!mounted.current) {
-            // do componentDidMount logic
-            mounted.current = true;
-        } else {
-            // do componentDidUpdate logic
-        }
-    });
 
     const selectCompany = (select) => {
         setCompanySelect(select)

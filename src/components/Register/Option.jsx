@@ -14,10 +14,10 @@ const Option = ({ data }) => {
                     e.preventDefault()
                     selectCompany(
                         {
-                        "name": data.nameCompany,
-                        "id": data.id
+                            "name": data.nameCompany,
+                            "id": data.id
                         }
-                );
+                    );
                 }}
             >
                 {data.nameCompany}

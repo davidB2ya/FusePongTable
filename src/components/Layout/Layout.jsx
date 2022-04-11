@@ -84,7 +84,7 @@ const Layout = ({ location }) => {
             <div className=" pb-24 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
               <div className=" pb-24 px-4 md:px-6">
                 <div className="flex-wrap sm:flex-row ">
-                <h3 className="flex item-center justify-center my-4 font-bold text-lg text-black dark:text-white">Proyectos de la Compañía</h3>
+                  <h3 className="flex item-center justify-center my-4 font-bold text-lg text-black dark:text-white">Proyectos de la Compañía</h3>
 
                   {dataTasks.length === 0 ? null : <div>
                     {dataTasks.map((task) => (

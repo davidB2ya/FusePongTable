@@ -8,7 +8,7 @@ const InfoAlert = () => {
                 <h3 className="text-lg font-medium text-blue-700 dark:text-blue-800">Upss! no te preocupes</h3>
             </div>
             <div className="mt-2 mb-4 text-sm text-blue-700 dark:text-blue-800">
-                Por favor seleccione un proyecto en la sesión de Inicio. <strong>Marque el botón azul para regrezar.</strong> 
+                Por favor seleccione un proyecto en la sesión de Inicio. <strong>Marque el botón azul para regrezar.</strong>
             </div>
             <div className="flex">
                 <a href="/dashboard">

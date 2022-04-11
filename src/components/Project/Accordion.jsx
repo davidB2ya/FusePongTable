@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { deleteTickectRequest,  getOneTikecktsRequest, updateTickectRequest } from '../../api/axios.js';
+import { deleteTickectRequest, getOneTikecktsRequest, updateTickectRequest } from '../../api/axios.js';
 import { useNavigate } from 'react-router-dom';
-import GeneralAlert from '../Utils/GeneralAlert.jsx';
 
 const Accordion = ({ data }) => {
 
@@ -17,33 +16,30 @@ const Accordion = ({ data }) => {
     const [loading, setLoading] = useState(false)
 
 
-    async function onSubmit (e)  {
+    async function onSubmit(e) {
         e.preventDefault();
         const field = {
-            nameTickets : title,
+            nameTickets: title,
             description: description,
             state: state,
         }
 
         const res = await updateTickectRequest(data.id, field)
-        
-        // const response = await res.json();
+
         setLoading(true)
         setTimeout(() => {
             setLoading(false)
         }, 1000);
         if (res.message === 'Ticket updated successfully!') {
-            // <GeneralAlert state="true" text="Se actualizo el Ticket"/>
             alert('Se actualizo el Ticket')
             setLoading(!loading)
             setUpdated(!updated)
-        }else {
-            // <GeneralAlert state="false" text="No se pudo actualizar el Ticket"/>
+        } else {
             alert('No se pudo actualizar el Ticket')
         }
     };
 
-    async function DeleteTicket  () {
+    async function DeleteTicket() {
         const res = await deleteTickectRequest(ticketData.id);
         navigate("/dashboard")
         if (res.message === "Ticket removed successfully!") {
@@ -82,9 +78,6 @@ const Accordion = ({ data }) => {
         <div id="accordion-color" data-accordion="collapse" data-active-classNamees="bg-blue-100 dark:bg-gray-800 text-blue-600 dark:text-white" className="bo mb-4">
             <h2 id="accordion-color-heading-1">
                 <input type="text" placeholder={title} value={title} onChange={(e) => setTitle(e.target.value)} className={Styles()} />
-                    {/* <span>{ticketData.nameTickets}</span> */}
-                    {/* <svg data-accordion-icon="" className="w-6 h-6 rotate-180 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg> */}
-                {/* </input> */}
             </h2>
             <div id="accordion-color-body-1" className="" aria-labelledby="accordion-color-heading-1">
                 <div className="p-5 border border-t-0 rounded-t-none rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-900">
@@ -116,8 +109,6 @@ const Accordion = ({ data }) => {
                 </div>
             </div>
         </div>
-
-
     )
 }
 

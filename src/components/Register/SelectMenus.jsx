@@ -8,7 +8,7 @@ function classNames(...classes) {
 }
 
 const SelectMenus = () => {
-    
+
     const { listcompany } = useApp();
     const data = listcompany
     const { selectCompany } = useApp();
@@ -25,7 +25,7 @@ const SelectMenus = () => {
             selectCompany(selected)
         })();
     }, [selected]);
-    
+
 
     return (
         <Listbox value={selected} onChange={setSelected}>

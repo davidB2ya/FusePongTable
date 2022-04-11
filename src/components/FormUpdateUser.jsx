@@ -72,7 +72,7 @@ const FormUpdateUser = () => {
     return (
         <div>
             <section className="h-screen bg-opacity-50 my-10">
-                {alert === true && <Alert state={stateAlert} location="profile"/>}
+                {alert === true && <Alert state={stateAlert} location="profile" />}
                 <form className="container max-w-2xl mx-auto shadow-md md:w-3/4" >
                     <div className="p-8 bg-gray-100 border-t-2 border-blue-400 rounded-lg bg-opacity-5">
                         <div className="max-w-sm mx-auto md:w-full md:mx-0">
@@ -114,7 +114,7 @@ const FormUpdateUser = () => {
                         </div>
                         <div className="items-center w-full p-4 space-y-4 text-gray-500 md:inline-flex md:space-y-0">
                             <h2 className="max-w-sm mx-auto md:w-1/3">
-                                Perteneces a la Compañía 
+                                Perteneces a la Compañía
                             </h2>
                             <div className="max-w-sm mx-auto md:w-2/3">
                                 <SelectMenus />

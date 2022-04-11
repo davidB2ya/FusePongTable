@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// const baseUrl = "http://localhost:3001"
+
 const baseUrl = "https://fusepong-api.herokuapp.com"
 
 export const loginResquest = async (body) => {
@@ -45,16 +45,5 @@ export const updateTickectRequest = async (id, fields) => {
 
 export const deleteTickectRequest = async (id) => await axios.delete(`${baseUrl}/api/tickets/delete-ticket/${id}`);
 
-// export const createPostRequest = async (post) => {
-//   const form = new FormData();
-//   for (let key in post) {
-//     form.append(key, post[key]);
-//   }
-//   return await axios.post("/api/posts", form, {
-//     headers: {
-//       "Content-Type": "multipart/form-data",
-//     },
-//   });
-// };
 
 

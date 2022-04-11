@@ -1,12 +1,8 @@
 import React, { useState } from 'react'
 import { useApp } from "../../contexts/store.js";
 
-import { useNavigate } from 'react-router-dom';
-import GeneralAlert from '../Utils/GeneralAlert.jsx';
-
 const CreateProject = () => {
 
-    const navigate = useNavigate();
     const User = JSON.parse(window.localStorage.getItem("User"))
 
     const id_user = User.id
@@ -39,7 +35,6 @@ const CreateProject = () => {
             alert('Se creó un nuevo Proyecto!')
             setName("")
             window.location.replace('');
-            // navigate("/dashboard")
         } else {
             // <GeneralAlert state="false" text="No se creó el Proyecto"/>
             alert('No se creó el Proyecto')

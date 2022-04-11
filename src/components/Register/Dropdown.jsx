@@ -45,14 +45,14 @@ const Dropdown = ({ color }) => {
                             Selecciona una Compañía
                         </button>
                         <div ref={popoverDropdownRef} className={(dropdownPopoverShow ? "block " : "hidden ") +
-                                (color === "white" ? "bg-white " : bgColor + " ") +
-                                "text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1"
-                            }
+                            (color === "white" ? "bg-white " : bgColor + " ") +
+                            "text-base z-50 float-left py-2 list-none text-left rounded shadow-lg mt-1"
+                        }
                             style={{ minWidth: "12rem" }}
                         >
                             {data.map((compa) => (
-                                        <Option key={compa.id} data={compa} />
-                                    ))}
+                                <Option key={compa.id} data={compa} />
+                            ))}
                         </div>
                     </div>
                 </div>
