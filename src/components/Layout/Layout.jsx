@@ -11,6 +11,7 @@ import ItemCard from '../Project/ItemCard';
 import Modal from '../Project/Modal';
 import FormUpdateUser from '../FormUpdateUser';
 import InfoAlert from '../Project/InfoAlert.jsx';
+import CreateProject from '../DashBoard/CreateProject.jsx';
 
 
 const Layout = ({ location }) => {
@@ -60,7 +61,7 @@ const Layout = ({ location }) => {
             <div>
               <div className="overflow-auto h-screen pb-24 px-4 md:px-6">
                 <ItemCard />
-                <button onClick={() => ShowModal()} type="button" className="py-2 px-4 my-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                <button onClick={() => ShowModal()} type="button" className="py-2 px-4 my-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                   Agregar Historia
                 </button>
               </div>
@@ -83,17 +84,19 @@ const Layout = ({ location }) => {
             <div className=" pb-24 pt-2 pr-2 pl-2 md:pt-0 md:pr-0 md:pl-0">
               <div className=" pb-24 px-4 md:px-6">
                 <div className="flex-wrap sm:flex-row ">
+                <h3 className="flex item-center justify-center my-4 font-bold text-lg text-black dark:text-white">Proyectos de la Compañía</h3>
+
                   {dataTasks.length === 0 ? null : <div>
                     {dataTasks.map((task) => (
                       <CardProject key={task.id} data={task} />
                     ))}
                   </div>
                   }
-                  <button onClick={() => ShowModal()} type="button" className="py-2 px-4 my-4  bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
+                  <button onClick={() => ShowModal()} type="button" className="py-2 px-4 my-4  bg-blue-600 hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                     Nuevo Proyecto
                   </button>
                 </div>
-
+                {show === true && <CreateProject />}
               </div>
 
             </div>

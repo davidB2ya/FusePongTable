@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { deleteTickectRequest,  getOneTikecktsRequest, updateTickectRequest } from '../../api/axios.js';
 import { useNavigate } from 'react-router-dom';
+import GeneralAlert from '../Utils/GeneralAlert.jsx';
 
 const Accordion = ({ data }) => {
 
@@ -10,8 +11,8 @@ const Accordion = ({ data }) => {
     const Project = JSON.parse(window.localStorage.getItem("Project"))
     const [ticketData, setTicketData] = useState([])
     const [updated, setUpdated] = useState(false)
-    const [description, setDescription] = useState(ticketData.description)
-    const [title, setTitle] = useState(ticketData.nameTickets)
+    const [description, setDescription] = useState(Project.description)
+    const [title, setTitle] = useState(Project.nameTickets)
     const [state, setState] = useState(data.state)
     const [loading, setLoading] = useState(false)
 
@@ -27,13 +28,18 @@ const Accordion = ({ data }) => {
         const res = await updateTickectRequest(data.id, field)
         
         // const response = await res.json();
-
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000);
         if (res.message === 'Ticket updated successfully!') {
-            alert('Ticket updated')
+            // <GeneralAlert state="true" text="Se actualizo el Ticket"/>
+            alert('Se actualizo el Ticket')
             setLoading(!loading)
             setUpdated(!updated)
         }else {
-            alert('Ticket not updated')
+            // <GeneralAlert state="false" text="No se pudo actualizar el Ticket"/>
+            alert('No se pudo actualizar el Ticket')
         }
     };
 

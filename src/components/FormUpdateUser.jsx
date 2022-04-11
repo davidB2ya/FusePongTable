@@ -76,12 +76,12 @@ const FormUpdateUser = () => {
                 <form className="container max-w-2xl mx-auto shadow-md md:w-3/4" >
                     <div className="p-8 bg-gray-100 border-t-2 border-blue-400 rounded-lg bg-opacity-5">
                         <div className="max-w-sm mx-auto md:w-full md:mx-0">
-                            <div className="relative flex items-center justify-between ">
-                                <img alt="profil" src={User.avatar} className="absolute mx-auto object-cover rounded-full h-16 w-16 " />
-                                <h1 className="text-gray-600 w-full flex ml-16 ">
+                            <div className="flex items-center justify-between ">
+                                <img alt="profil" src={User.avatar} className=" mx-auto object-cover rounded-full h-16 w-16 " />
+                                <h1 className="text-gray-600 w-full flex ml-4">
                                     {User.name}
                                 </h1>
-                                <img className="md:hidden lg:flex relative left-2/4 h-8 w-1/3 sm:h-10" src={DataCompany.logoCompany} alt="logo" />
+                                <img className="lg:flex h-10 w-10 sm:h-10" src={DataCompany.logoCompany} alt="logo" />
                             </div>
                         </div>
                     </div>

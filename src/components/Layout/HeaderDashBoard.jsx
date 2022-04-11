@@ -5,16 +5,20 @@ const HeaderDashBoard = () => {
     const User = JSON.parse(window.localStorage.getItem("User"))
     const DataCompany = JSON.parse(window.localStorage.getItem("Company"))
 
+    const cutName = User.name.split(" ");
+    const firstName = cutName[0];
+
     return (
         <div>
             {
-                DataCompany !== null && <header className="w-full shadow-lg bg-white dark:bg-gray-700 items-center h-16 rounded-2xl z-40">
+                DataCompany !== null && <header className="w-full shadow-lg bg-white dark:bg-gray-700 items-center h-20 rounded-2xl z-40">
                     <div className="relative z-20 flex flex-col justify-center h-full px-3 mx-auto flex-center">
                         <div className="relative items-center pl-1 flex w-full lg:max-w-68 sm:pr-2 sm:ml-0">
                             <div className="container relative left-0 z-50 flex w-3/4 h-auto ">
                                 <div className="relative p-1 flex items-center justify-start w-1/4 ml-5 mr-4 sm:mr-0 sm:right-auto">
                                     <a href="/profile" className="block relative">
-                                        <img alt="profil" src={User.avatar} className="mx-auto object-cover rounded-full h-10 w-10 " />
+                                        <img title="Perfil" alt="profile" src={User.avatar} className="mx-auto object-cover rounded-full h-10 w-10 " />
+                                        <span title="Perfil" className="font-medium text-gray-900 dark:text-gray-300">{firstName}</span>
                                     </a>
                                 </div>
                                 <div>
@@ -33,7 +37,7 @@ const HeaderDashBoard = () => {
                             </div>
                             <div className="relative p-1 flex items-center justify-end w-1/4 ml-5 mr-4 sm:mr-0 sm:right-auto">
                                 <img alt="profil" src={DataCompany.logoCompany} className="mx-auto object-cover h-10 w-10 " />
-                                <span className="text-sm text-gray-500 dark:text-gray-300 ">
+                                <span className="text-sm font-medium text-gray-500 dark:text-gray-300 ">
                                     {DataCompany.nameCompany}
                                 </span>
                             </div>

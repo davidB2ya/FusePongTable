@@ -1,24 +1,9 @@
 import React  from 'react'
 import Accordion from './Accordion'
 
-// import { useApp } from "../../contexts/store.js";
-// import { getTickestRequest } from '../../api/axios';
-
 const ItemCard = () => {
 
     const Project = JSON.parse(window.localStorage.getItem("Project"))
-    
-    // const { project } = useApp();
-    // console.log(project)
-    // const { activeProjects } = useApp();
-    // // const { updated } = useApp();
-
-    // useEffect(() => {
-    //     (async () => {
-    //         const res = await getTickestRequest(Project.project.id);
-    //         activeProjects(res)
-    //     })();
-    // }, []);
 
     return (
         <div className="shadow-lg rounded-2xl w-4/8 bg-white dark:bg-gray-800 p-4 my-4">
