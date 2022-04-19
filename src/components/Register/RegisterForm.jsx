@@ -59,7 +59,7 @@ const RegisterForm = () => {
             setAlert(true);
             swal({
                 title: "Excelente",
-                text: "Usuario registrado satisfactorimente",
+                text: "Usuario registrado satisfactoriamente",
                 icon: "success",
                 buttons: "Aceptar"
             })

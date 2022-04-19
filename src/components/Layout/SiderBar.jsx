@@ -56,7 +56,7 @@ const SiderBar = ({ location }) => {
                                 </svg>
                             </span>
                             <span className="mx-4 text-sm font-normal">
-                                Cerrar Sesion
+                                Cerrar Sesión
                             </span>
                         </a>
                         <div class="absolute bottom-0 my-10">
