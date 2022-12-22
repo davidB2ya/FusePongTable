@@ -15,7 +15,7 @@ export const AppProvider = ({ children }) => {
     const [company, setCompany] = useState([])
     const [project, setProject] = useState([])
 
-    const baseUrl = "https://fusepong-api.herokuapp.com"
+    const baseUrl = "https://fusepong-api-production.up.railway.app"
 
     const [listcompany, setListCompany] = useState([]);
     const [companySelect, setCompanySelect] = useState({});

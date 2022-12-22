@@ -18,7 +18,7 @@ const RegisterForm = () => {
     const [password, setPassword] = useState('');
     const [phoneNumber, setPhone] = useState('');
 
-    const baseUrl = "https://fusepong-api.herokuapp.com"
+    const baseUrl = "https://fusepong-api-production.up.railway.app"
     const { companySelect } = useApp();
     const select = companySelect
 

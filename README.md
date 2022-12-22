@@ -46,7 +46,7 @@
 * Logear un usuario `Post`
 
 ```http POST
-https://fusepong-api.herokuapp.com/api/login 
+https://fusepong-api-production.up.railway.app/api/login 
 ```
 | Body                      | Type     | raw            | headers                            |
 | :--------                 | :------- | :------------- | :--------------------------------- |
@@ -57,7 +57,7 @@ https://fusepong-api.herokuapp.com/api/login
 * Registrarse 
 
 ```http POST
-https://fusepong-api.herokuapp.com/api/register 
+https://fusepong-api-production.up.railway.app/api/register 
 ```
 | Body                                      | Type     | raw            | headers                            |
 | :--------                                 | :------- | :------------- | :--------------------------------- |
@@ -118,7 +118,7 @@ _Aquí debajo dejo el link del proyecto desplegado_
                 👇🏻👇🏻👇🏻👇🏻👇🏻👇🏻
 
 * Deploy Frontend Vercel : https://fuse-pong-table.vercel.app/
-* Deploy Backend Heroku : https://fusepong-api.herokuapp.com/
+* Deploy Backend Railway : https://fusepong-api-production.up.railway.app/
 ***
 
 ## Librerías Usadas 🏛

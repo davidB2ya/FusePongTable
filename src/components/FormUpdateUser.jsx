@@ -22,7 +22,7 @@ const FormUpdateUser = () => {
     const [password, setPassword] = useState(User.passwordHash);
     const [phoneNumber, setPhone] = useState(User.phoneNumber);
 
-    const baseUrl = "https://fusepong-api.herokuapp.com"
+    const baseUrl = "https://fusepong-api-production.up.railway.app"
     const { companySelect } = useApp();
     const select = companySelect
 

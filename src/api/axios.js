@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const baseUrl = "https://fusepong-api.herokuapp.com"
+const baseUrl = "https://fusepong-api-production.up.railway.app"
 
 export const loginResquest = async (body) => {
     return await axios.post(`${baseUrl}/api/login`, body, {

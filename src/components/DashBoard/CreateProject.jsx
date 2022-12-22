@@ -16,7 +16,7 @@ const CreateProject = () => {
 
     async function onSubmit(e) {
         e.preventDefault();
-        const baseUrl = "https://fusepong-api.herokuapp.com"
+        const baseUrl = "https://fusepong-api-production.up.railway.app"
         const response = await fetch(`${baseUrl}/api/projects/create-project`, {
             method: 'POST',
             headers: {

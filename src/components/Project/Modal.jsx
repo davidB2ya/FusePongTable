@@ -20,7 +20,7 @@ const Modal = () => {
 
     async function onSubmit(e) {
         e.preventDefault();
-        const baseUrl = "https://fusepong-api.herokuapp.com"
+        const baseUrl = "https://fusepong-api-production.up.railway.app"
         const response = await fetch(`${baseUrl}/api/tickets/create-ticket`, {
             method: 'POST',
             headers: {
